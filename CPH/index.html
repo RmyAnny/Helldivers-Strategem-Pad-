@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Strategem Pad</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="pad-grid">
+        <button class="arrow up" onclick="inputArrow('up')">↑</button>
+        <button class="arrow left" onclick="inputArrow('left')">←</button>
+        <button class="arrow down" onclick="inputArrow('down')">↓</button>
+        <button class="arrow right" onclick="inputArrow('right')">→</button>
+      </div>
+      
+      <div class="output" id="arrowOutput"></div>
+      <button class="delete-btn" onclick="resetSequence()">⟲ clear Input</button>
+      <div id="strategemContainer"></div>
+
+<!--hier irgendwo Buttons mit Funktion aka Sequence Js verknüpft-->
+</body>
+<!--<script src="script.js"></script>
+
+</html> -->
+<!--js script ist eingefügt, da ka warum auch immer die Datei script.js im edge dann nicht angezeigt wird, auch bei F12 dev tools gibts da nichts-->
+<script> 
+    const output = document.getElementById('arrowOutput');
+    let sequence = [];
+    const strategems = {
+  "↑ → ↓ ↓ ↓": "500KG BOMB",
+  "← → ↑ ↓": "Eagle Airstrike",  
+  "↑ ↑ ↓ ↓": "Laser Barrage",
+  "↑ → ↓ ↓ →": "Eagle Cluster Bomb",
+  "↑ → ↓ ↑": "Eagle Napalm Airstrike",
+  "↑ → ↑ ↓ ↓ ↓": "Eagle 500KG Bomb",   
+  "↑ → ↑ ↓": "Eagle Smoke Strike",
+  "↑ → →": "Eagle Strafing Run",
+  "↑ → ↑ ←": "Eagle 110MM Rocket Pods",
+  
+  // Waffen / Bodeneinheiten
+  "↓ ← ↓ ↑ →": "Machine Gun",  
+  "↓ ← → ↑ ↓": "Anti‑Material Rifle",  
+  "↓ ← ↓ ↑ ↑ →": "Autocannon",  
+  "↓ ← ↑ ↓ ↑": "Flamethrower",  
+  "↓ ↓ ← ↑ →": "Expendable Anti-Tank",  
+  "↓ ← ↓ ↑ ↑ ←": "Stalwart",  
+  "↓ ↑ ← → → ←": "HMG Emplacement",  
+  "↓ ↑ ← → ← ↓": "Shield Generator Relay",  
+  "↓ ↑ → ↑ ← →": "Tesla Tower",  
+  "↓ ← ← ↓": "Incendiary Mines",  
+  
+  // Orbital / Großangriffe
+  "→ ↓ ← ↑ ↑": "Orbital Gatling Barrage",  
+  "→ → →": "Orbital Airburst Strike",  
+  "→ → ↓ ↑ ↓ → ↓ ↓": "Orbital 120MM HE Barrage",  
+  "→ ↓ ↓ ↑ ↑ ← ↓ ↓ ↓": "Orbital 380MM HE Barrage",  
+  "→ ↓ → ↓ → ↓": "Orbital Walking Barrage",  
+  "→ ↓ ↑ → ↓": "Orbital Laser",
+  "→ ↑ ↓ ↓ →": "Orbital Railgun Strike", 
+  "→ → ↑": "Orbital Precision Strike", 
+  "→ → ↓ →": "Orbital Gas Strike", 
+  "→ → ← ↓": "Orbital EMS Strike",  
+  "→ → ↓ ↑": "Orbital Smoke Strike", 
+  
+  // Weitere (Mission / Allgemeine)
+  "↑ ↓ → ← ↑": "Reinforce", 
+  "↓ ↓ ↑ →": "Resupply",
+  "↑ ↓ → ↑": "SOS Beacon",  
+  "↓ ↑ ↓ ↑": "Super Earth Flag",
+  "↓ ↑ ← ↓ ↑ → ↓ ↑": "Hellbomb"  
+};
+
+
+
+function inputArrow(dir) {
+  const arrows = {
+    up: '↑',
+    down: '↓',
+    left: '←',
+    right: '→'
+  };
+
+  sequence.push(arrows[dir]);
+  updateOutput();
+  checkForStrategem(); // Überprüft den Input v1.2
+}
+
+  
+    function updateOutput() {
+      output.textContent = sequence.join(' ');
+    }
+    function resetSequence() {
+  sequence = [];
+  output.textContent = '';
+  output.style.backgroundColor = '#207'; // background light effekt night purple 
+  setTimeout(() => {
+    output.style.backgroundColor = '#111'; // back Grundfarbe ka was das für eine war 
+  }, 150);
+}
+function checkForStrategem() {
+  const currentSequence = sequence.join(' ');
+  const match = strategems[currentSequence];
+
+  const container = document.getElementById('strategemContainer');
+  container.innerHTML = ''; // alles löschen
+
+  if (match) {
+    const button = document.createElement('button');
+    button.className = 'strategem-btn';
+    button.textContent = match;
+    container.appendChild(button);
+  }
+}
+setTimeout(() => {
+  resetSequence();
+}, 2000); // Button wieder weg sozusagen Cool down vorher muss reset gedrückt werden
+
+
+  </script>
+  </body>
+  </html>
