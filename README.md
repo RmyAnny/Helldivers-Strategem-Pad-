@@ -1,5 +1,8 @@
 # Helldivers-Strategem-Pad
 Für Cosplay am Arm das Strategem Pad die Input Arrows v1
+aktuell  nur Webversion
+Ist für handydisplays auch geeignet
+Richtige "App Version" noch work in progress
 
 
 Funktionsweise: 
