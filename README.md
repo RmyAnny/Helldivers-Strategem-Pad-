@@ -10,6 +10,16 @@ mit den vier Pfeilen lassen sich in das Input Feld Pfeilkombis eingeben. Sobald 
 
 Die Pfeilkombis sind aus dem nternet und nein ich hab die nicht alle überprüft so langweilig war mir dann nicht. Deswegen hier nochmal alles mit Quellen falls wer sich das überhaupt durchließt:
 
+
+
+
+
+
+
+
+
+
+
 const strategems = {
   // Hangar / Eagle
   "↑ → ↓ →": "Eagle Airstrike",
