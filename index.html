@@ -16,7 +16,7 @@
       </div>
       
       <div class="output" id="arrowOutput"></div>
-      <button class="delete-btn" onclick="resetSequence()">⟲ clear Input</button>
+      <button class="deletebutton" onclick="resetSequence()">⟲ clear Input</button>
       <div id="strategemContainer"></div>
 
 <!--hier irgendwo Buttons mit Funktion aka Sequence Js verknüpft-->
@@ -72,8 +72,6 @@
   "↓ ↑ ← ↓ ↑ → ↓ ↑": "Hellbomb"  
 };
 
-
-
 function inputArrow(dir) {
   const arrows = {
     up: '↑',
@@ -81,20 +79,17 @@ function inputArrow(dir) {
     left: '←',
     right: '→'
   };
-
   sequence.push(arrows[dir]);
   updateOutput();
   checkForStrategem(); // Überprüft den Input v1.2
 }
-
-  
     function updateOutput() {
       output.textContent = sequence.join(' ');
     }
     function resetSequence() {
   sequence = [];
   output.textContent = '';
-  output.style.backgroundColor = '#207'; // background light effekt night purple 
+  output.style.backgroundColor = '#207'; // background light effekt
   setTimeout(() => {
     output.style.backgroundColor = '#111'; // back Grundfarbe ka was das für eine war 
   }, 150);
@@ -105,10 +100,9 @@ function checkForStrategem() {
 
   const container = document.getElementById('strategemContainer');
   container.innerHTML = ''; // alles löschen
-
   if (match) {
     const button = document.createElement('button');
-    button.className = 'strategem-btn';
+    button.className = 'strategembutton';
     button.textContent = match;
     container.appendChild(button);
   }
@@ -116,9 +110,6 @@ function checkForStrategem() {
 setTimeout(() => {
   resetSequence();
 }, 2000); // Button wieder weg sozusagen Cool down vorher muss reset gedrückt werden
-
-
   </script>
   </body>
   </html>
-
